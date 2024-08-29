@@ -9,7 +9,8 @@ function updateLabel(newLabel) {
 }
 
 function CipherSentence() {
-    const Reference_word = document.getElementById('Reference-Word').value.trim().toUpperCase();
+    const Reference_word_Space = document.getElementById('Reference-Word').value.trim().toUpperCase();
+    const Reference_word = Reference_word=Reference_word_Space.split(" ").join();
     const sentence = document.getElementById('sentence').value.trim();
     
     console.log("Reference_word:", Reference_word);
@@ -48,7 +49,8 @@ function CipherSentence() {
 }
 
 function DecipherSentence() {
-    const Reference_word = document.getElementById('Reference-Word').value.trim().toUpperCase();
+    const Reference_word_Space = document.getElementById('Reference-Word').value.trim().toUpperCase();
+    const Reference_word = Reference_word=Reference_word_Space.split(" ").join();
     const sentence = document.getElementById('sentence').value.trim();
     
     console.log("Reference_word:", Reference_word);
