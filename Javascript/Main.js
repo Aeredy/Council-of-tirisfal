@@ -9,21 +9,21 @@ function updateLabel(newLabel) {
 }
 
 function CipherSentence() {
-    const Reference_word_Space = document.getElementById('Reference-Word').value.trim().toUpperCase();
-    const Reference_word = Reference_word=Reference_word_Space.split(" ").join();
-    const sentence = document.getElementById('sentence').value.trim();
+    const Reference_word = document.getElementById('Reference-Word').value.trim().toUpperCase();
+    const Reference_word_no_space=Reference_word.split(" ").join('')
+    const sentence = document.getElementById('sentence').value
     
-    console.log("Reference_word:", Reference_word);
+    console.log("Reference_word:", Reference_word_no_space);
     console.log("Sentence:", sentence);
 
-    if (!Reference_word || !sentence) {
+    if (!Reference_word_no_space || !sentence) {
         alert('Please enter both a reference word and a sentence.');
         return;
     }
 
     let translatedSentence = '';
     let currentReferenceIndex = 0;
-    let currentAlphabet = shiftAlphabet(Reference_word[currentReferenceIndex]);
+    let currentAlphabet = shiftAlphabet(Reference_word_no_space[currentReferenceIndex]);
 
     for (let i = 0; i < sentence.length; i++) {
         const char = sentence[i];
@@ -38,8 +38,8 @@ function CipherSentence() {
             translatedSentence += isUpperCase ? translatedChar : translatedChar.toLowerCase(); 
         } else {
             translatedSentence += char;
-            currentReferenceIndex = (currentReferenceIndex + 1) % Reference_word.length;
-            currentAlphabet = shiftAlphabet(Reference_word[currentReferenceIndex])
+            currentReferenceIndex = (currentReferenceIndex + 1) % Reference_word_no_space.length;
+            currentAlphabet = shiftAlphabet(Reference_word_no_space[currentReferenceIndex])
         }
     }
 
@@ -49,21 +49,21 @@ function CipherSentence() {
 }
 
 function DecipherSentence() {
-    const Reference_word_Space = document.getElementById('Reference-Word').value.trim().toUpperCase();
-    const Reference_word = Reference_word=Reference_word_Space.split(" ").join();
-    const sentence = document.getElementById('sentence').value.trim();
+    const Reference_word = document.getElementById('Reference-Word').value.trim().toUpperCase();
+    const Reference_word_no_space=Reference_word.split(" ").join('')
+    const sentence = document.getElementById('sentence').value;
     
-    console.log("Reference_word:", Reference_word);
+    console.log("Reference_word:", Reference_word_no_space);
     console.log("Sentence to decipher:", sentence);
 
-    if (!Reference_word || !sentence) {
+    if (!Reference_word_no_space || !sentence) {
         alert('Please enter both a reference word and a sentence.');
         return;
     }
 
     let decipheredSentence = '';
     let currentReferenceIndex = 0;
-    let currentAlphabet = shiftAlphabet(Reference_word[currentReferenceIndex]);
+    let currentAlphabet = shiftAlphabet(Reference_word_no_space[currentReferenceIndex]);
 
     for (let i = 0; i < sentence.length; i++) {
         const char = sentence[i];
@@ -84,8 +84,8 @@ function DecipherSentence() {
         }
         else{
             decipheredSentence += char;
-            currentReferenceIndex = (currentReferenceIndex + 1) % Reference_word.length;
-            currentAlphabet = shiftAlphabet(Reference_word[currentReferenceIndex]);
+            currentReferenceIndex = (currentReferenceIndex + 1) % Reference_word_no_space.length;
+            currentAlphabet = shiftAlphabet(Reference_word_no_space[currentReferenceIndex]);
         }
     }
     console.log("Deciphered Sentence:", decipheredSentence);
